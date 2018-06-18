@@ -1,0 +1,65 @@
+.croppie-container {
+  max-height: 200px;
+}
+.croppie-container .cr-boundary {
+  width: 300px;
+  height: 235px !important;
+}
+.imagen-container {
+  width: 100%;
+  height: 24%;
+}
+.imagen-container .dropify-container {
+  width: 96%;
+}
+.dropify-wrapper.touch-fallback .dropify-clear {
+  bottom: 8px !important;
+}
+.ta-scroll-window > .ta-bind {
+  min-height: 150px !important;
+}
+md-grid-list md-grid-tile {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.imagen-button {
+  margin-top: 20px;
+}
+.servicio-form .descripcion-container text-angular .ta-toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.servicio-form .descripcion-container text-angular .ta-toolbar .ta-button-group button md-icon {
+  color: #f44336;
+}
+.servicio-form .descripcion-container .titulo md-icon {
+  margin-left: 0;
+  margin: 13px;
+}
+.servicio.info {
+  background-color: #1a57a5 !important;
+}
+.Servicios .AntesEdicion .infoBasica-content p {
+  font-size: 20px;
+}
+.home h1 {
+  color: #294bb9;
+  text-align: center;
+}
+.home .texto {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+.home .imagen img {
+  width: 61%;
+  height: 30%;
+}
+@media (min-width: 600px) {
+  .home .imagen img {
+    width: 84%;
+    height: 30%;
+  }
+}

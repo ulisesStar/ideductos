@@ -1,0 +1,521 @@
+mobile = "(max-width: 800px)"
+//compu = "(min-width: 600px) and (max-width: 1400px)"
+cortina = #001931
+dialogos = #001a3b
+*
+	box-sizing border-box
+
+.wrapper
+	width 100vw
+	height 100vh
+
+
+.section
+	height 100%
+	width calc(100% / 5)
+	float left
+	position relative
+	&:nth-child(1)
+		background url("/img/fondoHome.jpeg") no-repeat center center fixed
+		-webkit-background-size cover
+		-moz-background-size cover
+		-o-background-size cover
+		background-size cover
+
+	&:nth-child(3)
+		background url("/img/1.png")
+		background-position center center
+		background-repeat no-repeat
+		background-size cover
+
+	&:nth-child(4)
+		background-image url("/img/contactanos.png")
+		background-position center center
+		background-repeat no-repeat
+		background-size cover
+.sections
+	width 500vw
+	height 100vh
+
+.logo
+	@media mobile
+		width 147px
+		height 67px
+	position fixed
+	z-index 10
+	width 191px
+	height 80px
+	img
+		height 100%
+		width 100%
+		padding 13px
+
+section
+
+	&#home
+		position relative
+		.cortinita
+			z-index 1
+			margin-right 100%
+			float right
+			background cortina
+			opacity 0.85
+			height 100%
+			width 100%
+			position absolute
+			top 0px
+			left 0px
+		.imagen
+			@media mobile
+				height 31vh
+				width 55vw
+				top 128px
+			position absolute
+			margin auto
+			left 0px
+			right 0px
+			top 0px
+			bottom 0px
+			z-index 3
+			height 53vh
+			width 49vw
+			background-size cover
+			background-position center
+			background-repeat no-repeat
+		.home-container
+			position relative
+			margin 10vh 10vw
+			height 80vh
+			width 80vw
+			.line
+				@media mobile
+					height 59%
+				display flex
+				width 100%
+				height 50%
+				flex-direction row
+				position relative
+				.cuadro-container
+					@media mobile
+						width 100%
+					width 30%
+					position relative
+					display flex
+					justify-content center
+					align-items center
+					.cuadro
+						@media mobile
+							height 25vh
+							width 55vw
+						background-color dialogos
+						height 21vh
+						width 18vw
+						display flex
+						padding 25px
+						justify-content center
+						align-items center
+						flex-direction column
+						color white
+						position absolute
+						z-index 4
+						h2
+							margin 3px 0
+							font-family Source Sans Pro
+							font-size 1.5vw
+							@media mobile
+								font-size 5.5vw
+
+
+						p
+							font-family PT Sans
+							text-align justify
+							font-size .9vw
+							@media mobile
+								font-size 3.1vw
+						h3
+							margin 3px 0
+							font-family Source Sans Pro
+							text-align center
+							font-size 1.3vw
+							@media mobile
+								font-size 2vh
+							
+				.texto-container
+					width 70%
+					position relative
+					display flex
+					font-size 5.5vw
+					color white
+					&.integridad-container
+						@media mobile
+							display none
+						justify-content flex-start
+						align-items flex-start
+						z-index 2
+						h1
+							font-family Source Sans Pro
+							position absolute
+					&.ductos-container
+						@media mobile
+							display none
+						justify-content flex-end
+						align-items flex-end
+						z-index 4
+						h1
+							position absolute
+							font-family Source Sans Pro
+					h1
+						margin 0px
+				div
+					height 100%
+
+	&#servicios
+		position relative
+		.capa
+			z-index -1
+			float right
+			background cortina
+			height 100%
+			width 100%
+			position absolute
+			top 0px
+			left 0px
+		.servicios-container
+			height 100vh
+			width 100vw
+			z-index 2
+			.tituloServicios
+				@media mobile
+					display none
+				display flex
+				justify-content center
+				align-items center
+				font-size 4vw
+				margin-top 12vh
+				h1
+					font-family Source Sans Pro
+					color white
+					margin 0
+					z-index 5
+			
+			.descripcion
+				@media mobile
+					display none
+				.descripcion-content
+					position absolute
+					width 60vw
+					top 57vh
+					left 22vw
+					z-index 5
+					p
+						color white
+						font-size 1.2vw
+						text-align justify
+						
+			.servicios-content
+				@media mobile
+					height 100%
+					flex-direction column
+				width 100%
+				position absolute
+				z-index 4
+				top 0
+				.servicio-indivudal
+					@media mobile
+						width inherit
+						flex-direction row-reverse
+						justify-content space-around
+						align-items center
+					border 1px solid rgba(255, 255, 255, 0.2) !important
+					height 100vh
+					width calc(100vw/5)
+					display flex
+					justify-content center
+					align-items center
+					position relative
+					
+					md-icon
+						color white
+						font-size 7vh
+						height 5vh
+						width 4vw
+						cursor pointer
+						margin inherit !important
+						
+
+					.nombreServicio
+						@media mobile
+							width 50vw
+							
+						width 14vw
+						h3
+							@media mobile
+								font-size 4.5vw
+							font-family Source Sans Pro
+							text-align center
+							color white
+							font-size 1.4vw
+
+				&:hover .servicio-indivudal
+					opacity 1
+
+				.background
+					position absolute
+					z-index -1
+					img
+						width 100vw
+						height 100vh
+						top 0px
+						z-index -1
+
+	&#cultura
+		position relative
+		
+		.cortina
+			z-index 1
+			float right
+			background cortina
+			opacity 0.85
+			height 100%
+			width 100%
+			position absolute
+			top 0px
+			left 0px
+
+		.cultura-container
+			position relative
+			margin 10vh 10vw
+			height 80vh
+			width 80vw
+			z-index 2
+			
+			.tituloCultura
+				z-index 3
+				display flex
+				justify-content center
+				align-items center
+				font-size 4vw
+				h1
+					font-family Source Sans Pro
+					color white
+					margin 0
+			
+			.informacion-container
+				@media mobile
+					flex-direction column
+				position relative
+				display flex
+				flex-direction row
+				justify-content center
+				align-items center
+				margin-top 3vh
+				.parteIzquierda
+					@media mobile
+						display flex
+						flex-direction column
+						align-items center
+					position relative
+					width 100%
+					.textoVision
+						@media mobile
+							font-size 3.5vw
+							
+						width 90%
+						font-size 1.5vw
+						margin 20px 0
+						h1
+							color white
+							font-family Source Sans Pro
+						p 
+							color white
+							text-align justify
+							margin 0px
+							font-family PT Sans
+
+					.imagenVision
+						@media mobile
+							height 15vh
+							width 54vw
+							margin-top 2vh
+						height 36vh
+						width 36vw
+						background-position center
+						background-repeat no-repeat
+						background-size cover
+						margin-top 3vh
+				.parteDerecha
+					@media mobile
+						margin-top 3vh
+						align-items inherit
+						flex-direction column-reverse
+					width 100%
+					position relative
+					display flex
+					flex-direction column
+					align-items flex-end
+					.imagenMision
+						@media mobile
+							height 15vh
+							width 54vw
+						height 36vh
+						width 36vw
+						background-position center
+						background-repeat no-repeat
+						background-size cover
+						margin-bottom 2vh
+					.textoMision
+						@media mobile
+							font-size 3.5vw
+						font-size 1.5vw
+						color white
+						width 90%
+						margin 20px 0
+						p 
+							text-align justify
+							font-family PT Sans
+						h1 
+							margin 0px
+							font-family Source Sans Pro
+
+	&#contacto
+		position relative
+		.contacto-container
+			position relative
+			margin 10vh 10vw
+			height 80vh
+			width 80vw
+			z-index 2
+			.tituloContacto
+				z-index 3
+				color white
+				font-size 4vw
+				display flex
+				flex-direction column
+				align-items center	
+				h1
+					font-family Source Sans Pro
+					margin 0
+				p
+					@media mobile
+						font-size 5vw !important
+					margin 0
+					font-size 2vw !important
+					font-family PT Sans
+					
+			.formulario-container
+				position relative
+				z-index 3
+				display flex
+				justify-content center
+				align-items center
+				margin-top 5vh
+				.formulario
+					@media mobile
+						width 73vw
+					display flex
+					flex-direction column
+					width 30vw
+					height 50vh
+					position relative
+					align-items center
+					md-input-container
+						margin 0px 0 !important
+						width 100%
+						input
+							border-radius 10px
+							background-color white !important
+						.md-resize-wrapper
+							textarea
+								border-radius 10px
+								background-color white
+						label
+							padding 0 30px
+					.md-button
+						background-color dialogos
+						width 9vw
+						span
+							@media mobile
+								font-size 2vh
+							color white
+							font-size 3vh
+			.Entregado
+				margin-top 12vh
+				display flex
+				flex-direction column
+				justify-content center
+				align-items center
+				font-size 2vw
+				color white
+				text-align center
+				@media mobile
+					font-size 4vw
+				
+				h1
+					margin 0
+					
+.servicioIndividual
+	position absolute
+	min-height 100vh
+	background-color cortina
+	.servicioIndividual-container
+		position relative
+		margin 10vh 10vw
+		height 100%
+		width 80vw
+		z-index 2
+		.servicioIndivual-titulo
+			@media mobile
+				font-size 4vw
+				margin-bottom 4vh
+				margin-top 14vh
+			z-index 3
+			color white
+			font-size 2vw
+			display flex
+			flex-direction column
+			align-items center	
+			h1
+				font-family Source Sans Pro
+				margin 0
+		.subservicio-container
+			@media mobile
+				margin-top 30px
+			margin-top 60px
+			.subservicio-content
+				margin-top 2vh
+				@media mobile
+					display flex
+					flex-direction column
+				.info
+					color white
+					width 50%
+					@media mobile
+						width 100%
+					h1
+						@media mobile
+							font-size 5vw
+						font-size 1.5vw
+						margin-top 0
+						width 90%
+					.descripcion
+						width 90%
+						text-align justify
+						p
+							@media mobile
+								font-size 3vw
+							font-size 1.3vw
+			
+				imagenes
+					width 36vw
+					height 29vh
+					@media mobile
+						height 22vh
+						width 72vw
+					.imagen
+						width 100%
+						height 100%
+						background-position center
+						background-repeat no-repeat
+						background-size cover
+			&:nth-child(2n+2)
+				flex-direction row-reverse !important

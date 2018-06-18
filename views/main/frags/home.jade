@@ -1,0 +1,75 @@
+#js-wrapper.wrapper
+	#js-slideContainer.sections
+		section.section#home
+			.imagen(style="background-image:url(img/Home.jpeg)")
+			.home-container
+				.line
+					.texto-container.integridad-container
+						h1 Integridad de
+					.cuadro-container
+						.cuadro.arriba
+							h2 ¿Quiénes somos?
+							p Una empresa formada por jóvenes ingenieros entrenados y certificados en el control de la corrosión bajo los estándares de la Asociación Nacional de Ingenieros en Corrosión de Estados Unidos(NACE International).
+				.line
+					.cuadro-container
+						.cuadro.abajo
+							h3 !Algunos realizan estudios, otros protección catódica, nosotros hacemos integridad!
+					.texto-container.ductos-container
+						h1 Ductos
+			.cortinita
+
+		section.section#servicios
+			.servicios-container
+				.tituloServicios
+					h1 {{ctrl.nombreServicio}}
+				.descripcion
+					.descripcion-content(ng-bind-html="ctrl.descripcion")
+				.servicios-content(layout="row")
+					.servicio-indivudal#individual(ng-repeat="servicio in ctrl.servicios.items" layout="column")
+						md-icon(ng-click="ctrl.servicios.click(servicio)" ng-mouseover="ctrl.servicios.muestra(servicio)" ng-mouseleave="ctrl.servicios.oculta()" ng-if="servicio.estado") adjust
+						.nombreServicio(ng-if="servicio.estado")
+							h3 {{servicio.nombre}}
+						.capa
+					.background
+						img(src="{{ctrl.background.imagen}}" ng-if="ctrl.background.imagen")
+		section.section#cultura
+			.cultura-container
+				.tituloCultura
+					h1 Cultura
+				.informacion-container
+					.parteIzquierda
+						.textoVision
+							h1 Visión
+							p Ser la empresa líder en el mercado mexicano en la gestión de la integridad de ductos que transporta hidrocarburos.
+						.imagenVision(style="background-image:url(img/vision.png)")
+					.parteDerecha
+						.imagenMision(style="background-image:url(img/mision.png)")
+						.textoMision
+							h1 Misión
+							p Ayudar a los operadores de ductos a entregar su producto de manera segura a sus clientes, sin riesgo para la población, los trabajadores ni el medio ambiente.
+			.cortina
+
+		section.section#contacto
+			.contacto-container
+				.tituloContacto
+					h1 Contáctanos
+					p contacto@ideductos.com
+				.formulario-container(ng-if="ctrl.entregado")
+					form.formulario(ng-submit="ctrl.prospecto.nuevoProspecto(prospecto)" )
+						md-input-container(flex)
+							label Nombre
+							input(ng-model="prospecto.nombre" required)
+						md-input-container(flex)
+							label Email
+							input(ng-model="prospecto.correo" required)
+						md-input-container(flex)
+							label Teléfono
+							input(ng-model="prospecto.telefono" required)
+						md-input-container(flex)
+							label Mensaje
+							textarea(ng-model="prospecto.mensaje" md-maxlength="800" rows="5" required)
+						md-button(type="submit")
+								| Enviar
+				.Entregado(ng-if="!ctrl.entregado")
+					h1 Gracias por contactarnos!!
+					h1 Pronto nos comunicaremos con usted.

@@ -1,0 +1,10 @@
+.servicioIndividual
+	.servicioIndividual-container
+		.servicioIndivual-titulo
+			h1 {{servicio.nombre}}
+		.subservicio-container
+			.subservicio-content(ng-repeat="subservicio in subservicios" layout="row")
+				.info
+					h1 {{subservicio.nombre}}
+					.descripcion(ng-bind-html="subservicio.descripcion")
+				imagenes(id="subservicio.id")

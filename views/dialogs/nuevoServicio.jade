@@ -1,0 +1,14 @@
+md-dialog
+	md-toolbar
+		.md-toolbar-tools
+			h4 Nuevo Servicio
+			span(flex)
+			md-button(ng-click="close()")
+				md-icon clear
+	form.md-padding(layout="row" ng-submit="submit(servicio)")
+		md-input-container(flex)
+			label Nombre del Servicio
+			input(ng-model="servicio.nombre" required)
+		md-button.md-raised(type="submit")
+			md-icon save
+

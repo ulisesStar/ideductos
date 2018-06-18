@@ -1,0 +1,118 @@
+.Servicios(layout="row" layout-xs="column" layout-sm="column")
+	md-card(flex="50")
+		md-toolbar
+			.md-toolbar-tools
+				h4 Información Básica
+				span(flex)
+				md-button(ng-click="habilitarEdicion()")
+					md-icon(ng-show="!infomuestra") edit
+					md-icon(ng-show="infomuestra") clear
+		md-card-content
+			.AntesEdicion(ng-show= "!infomuestra")
+				h1 Nombre:
+				h3 {{servicio.nombre}}
+				md-divider
+				h1 Descripcion:
+				.infoBasica-content(ng-bind-html="servicio.descripcion")
+			.DespuesEdicion(ng-show= "infomuestra")
+				form.servicio-form(ng-submit="editarServicio(servicio)" layout="column")
+					.info(layout="row" layout-xs="column" layout-align="space-between center")
+						md-input-container(flex)
+							md-icon(md-colors="{color: 'red'}")  &#xE873;
+							label Nombre del Servicio
+							input(ng-model="servicio.nombre")
+					.descripcion-container
+						.titulo(layout="row")
+							md-icon(md-colors="{color: 'red'}") &#xe22b;
+							p Descripción del Servicio
+						text-angular(ng-model="servicio.descripcion")
+					md-button.servicio.info(type="submit" md-colors="{background: 'green'}" )
+						md-icon save
+	md-card(flex="50")
+		md-toolbar
+			.md-toolbar-tools
+				h4 Imagenes del Servicio
+		md-card-content
+			form(ng-submit="guardarImagen(imagen)")
+				.imagen-container(layout-align="center center")
+					.dropify-container(ng-init="Dropify()" flex)
+						input.dropify(type="file" data-default-file="Imagen del Servicio" ng-model="imagen" base-sixty-four-input maxsize="54836" data-max-file-size="9000K" accept="image/*" style="padding:0px;")
+					
+				md-button.imagen-button(type="submit" md-colors="{background: 'green'}" flex)
+					md-icon save
+			md-divider
+			md-grid-list(md-cols="4" md-row-height="150px")
+				md-grid-tile(md-colspan="1" md-rowspan="1" ng-repeat="imagen in imagenes" style="background-image:url({{imagen.imagen}})")
+					md-grid-tile-footer(layout-align="center center")
+						md-button(ng-click="eliminarImagen(imagen.id,$index)")
+							md-icon clear
+md-card
+	md-toolbar
+		.md-toolbar-tools
+			h4 Lista de Sub-Servicios Guardados
+			span(flex)
+			md-button(ng-click="apareceSubServicio()")
+				md-icon(ng-show= "!aparece") add
+				md-icon(ng-show= "aparece") close
+	md-card-content(ng-if="aparece")
+		form.servicio-form(ng-submit="ctrl.subservicio.submit(subservicio)" layout="column")
+			.info(layout="row" layout-xs="column" layout-align="space-between center")
+				md-input-container(flex)
+					md-icon(md-colors="{color: 'red'}")  &#xE873;
+					label Nombre del Sub-Servicio
+					input(ng-model="subservicio.nombre")
+			.descripcion-container
+				.titulo(layout="row")
+					md-icon(md-colors="{color: 'red'}") &#xe22b;
+					p Descripción del Sub-Servicio
+				text-angular(ng-model="subservicio.descripcion")
+			md-button.servicio.info(type="submit" md-colors="{background: 'green'}" )
+				md-icon save
+md-card(ng-if="muestrate === true")
+		md-toolbar
+			.md-toolbar-tools
+				h4 Imagen del Sub-Servicio
+				span(flex)
+				md-button(ng-click="cerrarImagenesSub()")
+					md-icon close
+		md-card-content
+			form(ng-submit="guardarImagenSubservicio(imagen)")
+				.imagen-container(layout-align="center center")
+					.dropify-container(ng-init="Dropify()" flex ng-hide="inputImage")
+						input.dropify(type="file" data-default-file="Imagen del Sub-Servicio" ng-model="imagen" base-sixty-four-input maxsize="54836" data-max-file-size="9000K" accept="image/*" style="padding:0px;")
+					.croppie-container(flex ng-show="inputImage")
+						ng-croppie(src="inputImage"
+							ng-model='imagen'
+							boundry="{w: 300, h: 300}"
+							viewport="{w: 500, h: 213}"
+							mousezoom="true" 
+							zoom="true" 
+							orientation="90"
+							type="rectangle")
+					
+				md-button.imagen-button(type="submit" md-colors="{background: 'green'}" flex)
+					md-icon save
+			md-divider
+			md-grid-list(md-cols="4" md-row-height="150px")
+				md-grid-tile(md-colspan="1" md-rowspan="1" ng-repeat="imagen in subimagenes" style="background-image:url({{imagen.imagen}})")
+					md-grid-tile-footer(layout-align="center center")
+						md-button(ng-click="eliminarImagen(imagen.id,$index)")
+							md-icon clear
+	md-list
+		md-list-item(ng-repeat="subservicio in ctrl.subservicio.items")
+			.md-list-item-text
+				strong {{subservicio.nombre}}
+			md-fab-toolbar(md-open="false" count="0"  md-direction="left" flex)
+				md-fab-trigger
+					md-button
+						md-icon more_vert
+				md-toolbar
+					md-fab-actions(layout="row")
+						md-button(md-colors="{background: 'green'}" ng-click="subservicio.editar(subservicio)")
+							md-icon edit
+						md-button(md-colors="{background: 'blue'}" ng-click="subservicio.muestraImagen(subservicio)")
+							md-icon photo
+						md-button(md-colors="{background: 'red'}" ng-click="subservicio.eliminar($index)")
+							md-icon delete	
+			md-divider
+		cl-paging(cl-pages="ctrl.subservicio.paginas" cl-steps="4" cl-page-changed="ctrl.subservicio.cambioPagina()" cl-align="start start" cl-current-page="ctrl.subservicio.pagina")
