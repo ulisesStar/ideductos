@@ -38,6 +38,9 @@ dialogos = #001a3b
 	height 100vh
 
 .logo
+	&:focus 
+		outline none
+	cursor pointer
 	@media mobile
 		width 147px
 		height 67px
@@ -170,6 +173,7 @@ section
 					height 100%
 
 	&#servicios
+		//background cortina
 		position relative
 		.capa
 			z-index -1
@@ -235,6 +239,8 @@ section
 					position relative
 					
 					md-icon
+						&:focus
+							outline none
 						color white
 						font-size 7vh
 						height 5vh
@@ -267,6 +273,17 @@ section
 						height 100vh
 						top 0px
 						z-index -1
+					.cortinita
+						z-index 1
+						margin-right 100%
+						float right
+						background black
+						opacity 0.75
+						height 100%
+						width 100%
+						position absolute
+						top 0px
+						left 0px
 
 	&#cultura
 		position relative
@@ -517,5 +534,8 @@ section
 						background-position center
 						background-repeat no-repeat
 						background-size cover
-			&:nth-child(2n+2)
-				flex-direction row-reverse !important
+				&:nth-child(2n+2)
+					flex-direction row-reverse !important
+					justify-content space-between
+					@media mobile
+						flex-direction column !important

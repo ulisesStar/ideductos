@@ -90,7 +90,7 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
             obtener(){
                 Servicio.obtener()
                 .then(res => self.servicios.items = res.data.map(n => new Servicios_(n)))
-                .then(res => individual())
+                //.then(res => individual())
                 .then(() => $scope.$digest())
             }
 

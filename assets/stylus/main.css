@@ -35,10 +35,14 @@
   height: 100vh;
 }
 .logo {
+  cursor: pointer;
   position: fixed;
   z-index: 10;
   width: 191px;
   height: 80px;
+}
+.logo:focus {
+  outline: none;
 }
 @media (max-width: 800px) {
   .logo {
@@ -298,6 +302,9 @@ section#servicios .servicios-container .servicios-content .servicio-indivudal md
   cursor: pointer;
   margin: inherit !important;
 }
+section#servicios .servicios-container .servicios-content .servicio-indivudal md-icon:focus {
+  outline: none;
+}
 section#servicios .servicios-container .servicios-content .servicio-indivudal .nombreServicio {
   width: 14vw;
 }
@@ -329,6 +336,18 @@ section#servicios .servicios-container .servicios-content .background img {
   height: 100vh;
   top: 0px;
   z-index: -1;
+}
+section#servicios .servicios-container .servicios-content .background .cortinita {
+  z-index: 1;
+  margin-right: 100%;
+  float: right;
+  background: #000;
+  opacity: 0.75;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 section#cultura {
   position: relative;
@@ -664,6 +683,12 @@ section#contacto .contacto-container .Entregado h1 {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.servicioIndividual .servicioIndividual-container .subservicio-container:nth-child(2n+2) {
+.servicioIndividual .servicioIndividual-container .subservicio-container .subservicio-content:nth-child(2n+2) {
   flex-direction: row-reverse !important;
+  justify-content: space-between;
+}
+@media (max-width: 800px) {
+  .servicioIndividual .servicioIndividual-container .subservicio-container .subservicio-content:nth-child(2n+2) {
+    flex-direction: column !important;
+  }
 }
