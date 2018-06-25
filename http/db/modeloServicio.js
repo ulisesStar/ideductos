@@ -6,7 +6,8 @@ var ex = function(conector) {
     var Servicio = sequelize.define('servicio', {
         id:{ type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
         nombre : Sequelize.STRING,
-        descripcion : Sequelize.TEXT
+        descripcion : Sequelize.TEXT,
+        status : Sequelize.INTEGER
 
     })
 

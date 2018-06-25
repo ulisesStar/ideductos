@@ -14,7 +14,6 @@ var sequelize = new Sequelize('heroku_8336c91bfbfd82e', 'bebb7ad19454a6', '28d75
 });
 */
 
-
 var sequelize = new Sequelize('ideductos', 'root', 'root', {
     host: '35.185.98.151',
     dialect: 'mysql',

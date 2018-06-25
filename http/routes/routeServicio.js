@@ -17,6 +17,9 @@ routeServicio.route('/data/Subservicios/:idServicio')
 
 routeServicio.route('/data/obtenerDeServicio/:idServicio')
 		.get(x.obtenerDeServicio);
-        
+
+routeServicio.route('/data/servicio/imagen/:id')
+        .get(x.imagen);
+
 
 module.exports = routeServicio;

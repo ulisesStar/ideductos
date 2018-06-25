@@ -2,6 +2,9 @@ mobile = "(max-width: 800px)"
 //compu = "(min-width: 600px) and (max-width: 1400px)"
 cortina = #001931
 dialogos = #001a3b
+rojo = #e50300
+
+
 *
 	box-sizing border-box
 
@@ -9,12 +12,19 @@ dialogos = #001a3b
 	width 100vw
 	height 100vh
 
+footer
+	height 100px
+	width 100%
+	background-color cortina
 
 .section
 	height 100%
 	width calc(100% / 5)
 	float left
 	position relative
+
+	&#cultura
+		width calc((100% / 5) * 2) !important
 	&:nth-child(1)
 		background url("/img/fondoHome.jpeg") no-repeat center center fixed
 		-webkit-background-size cover
@@ -22,11 +32,21 @@ dialogos = #001a3b
 		-o-background-size cover
 		background-size cover
 
+
 	&:nth-child(3)
 		background url("/img/1.png")
 		background-position center center
 		background-repeat no-repeat
 		background-size cover
+		overflow hidden
+		.background
+			width 150vw
+			height 100vh
+			position absolute
+			background url("/img/1.png")
+			background-position center center
+			background-repeat no-repeat
+			background-size cover
 
 	&:nth-child(4)
 		background-image url("/img/contactanos.png")
@@ -36,22 +56,38 @@ dialogos = #001a3b
 .sections
 	width 500vw
 	height 100vh
-
-.logo
-	&:focus 
-		outline none
-	cursor pointer
-	@media mobile
-		width 147px
-		height 67px
-	position fixed
-	z-index 10
-	width 191px
-	height 80px
-	img
-		height 100%
+	.borde
+		background-color rojo
 		width 100%
-		padding 13px
+		height 5px
+		bottom 0px
+		position fixed
+		z-index 1
+
+header
+	display flex
+	flex-direction row
+	justify-content space-between
+	position fixed
+	z-index 1
+	width 100%
+	.logo
+		&:focus
+			outline none
+		cursor pointer
+		@media mobile
+			width 147px
+			height 67px
+		z-index 10
+		width 191px
+		height 80px
+		img
+			height 100%
+			width 100%
+			padding 13px
+	.md-button
+		background-color red
+		color white
 
 section
 
@@ -80,7 +116,7 @@ section
 			top 0px
 			bottom 0px
 			z-index 3
-			height 53vh
+			height 49vh
 			width 49vw
 			background-size cover
 			background-position center
@@ -142,7 +178,7 @@ section
 							font-size 1.3vw
 							@media mobile
 								font-size 2vh
-							
+
 				.texto-container
 					width 70%
 					position relative
@@ -173,8 +209,10 @@ section
 					height 100%
 
 	&#servicios
-		//background cortina
+		background cortina
 		position relative
+		&.active
+			background-color white
 		.capa
 			z-index -1
 			float right
@@ -201,7 +239,7 @@ section
 					color white
 					margin 0
 					z-index 5
-			
+
 			.descripcion
 				@media mobile
 					display none
@@ -215,7 +253,15 @@ section
 						color white
 						font-size 1.2vw
 						text-align justify
-						
+					table
+						tr
+							display flex
+							th
+								width 50%
+						p
+							margin 0px
+
+
 			.servicios-content
 				@media mobile
 					height 100%
@@ -230,29 +276,42 @@ section
 						flex-direction row-reverse
 						justify-content space-around
 						align-items center
-					border 1px solid rgba(255, 255, 255, 0.2) !important
+					border .5px solid #002344 !important
 					height 100vh
 					width calc(100vw/5)
 					display flex
 					justify-content center
 					align-items center
 					position relative
-					
-					md-icon
-						&:focus
-							outline none
-						color white
-						font-size 7vh
-						height 5vh
-						width 4vw
-						cursor pointer
-						margin inherit !important
-						
+					&.active
+						border-color rgba(255, 255, 255, .1) !important
+					.md-button
+						height 50px
+						width 50px
+						min-height 50px
+						min-width 50px
+						border-radius 50px
+						padding 0px
+						display flex
+						justify-content center
+						align-items center
+						&.inactive
+							opacity .1
+						md-icon
+							margin 0px
+							&:focus
+								outline none
+							color white
+							font-size 45px
+							height 45px
+							width 45px
+							cursor pointer
+
 
 					.nombreServicio
 						@media mobile
 							width 50vw
-							
+
 						width 14vw
 						h3
 							@media mobile
@@ -287,7 +346,8 @@ section
 
 	&#cultura
 		position relative
-		
+		display flex
+		flex-direction row
 		.cortina
 			z-index 1
 			float right
@@ -305,7 +365,7 @@ section
 			height 80vh
 			width 80vw
 			z-index 2
-			
+
 			.tituloCultura
 				z-index 3
 				display flex
@@ -316,7 +376,7 @@ section
 					font-family Source Sans Pro
 					color white
 					margin 0
-			
+
 			.informacion-container
 				@media mobile
 					flex-direction column
@@ -336,25 +396,33 @@ section
 					.textoVision
 						@media mobile
 							font-size 3.5vw
-							
+
 						width 90%
 						font-size 1.5vw
 						margin 20px 0
 						h1
 							color white
 							font-family Source Sans Pro
-						p 
+							margin 5px 0
+						p
 							color white
 							text-align justify
 							margin 0px
 							font-family PT Sans
+							font-size 17px
+						md-list
+							md-list-item
+								min-height 20px
+								height 25px
+								color white
+								font-size 16px
 
 					.imagenVision
 						@media mobile
 							height 15vh
 							width 54vw
 							margin-top 2vh
-						height 36vh
+						height 30vh
 						width 36vw
 						background-position center
 						background-repeat no-repeat
@@ -374,7 +442,7 @@ section
 						@media mobile
 							height 15vh
 							width 54vw
-						height 36vh
+						height 30vh
 						width 36vw
 						background-position center
 						background-repeat no-repeat
@@ -387,12 +455,15 @@ section
 						color white
 						width 90%
 						margin 20px 0
-						p 
+						p
 							text-align justify
 							font-family PT Sans
-						h1 
+							font-size 17px
+
+						h1
 							margin 0px
 							font-family Source Sans Pro
+							margin 5px 0
 
 	&#contacto
 		position relative
@@ -408,7 +479,7 @@ section
 				font-size 4vw
 				display flex
 				flex-direction column
-				align-items center	
+				align-items center
 				h1
 					font-family Source Sans Pro
 					margin 0
@@ -418,7 +489,7 @@ section
 					margin 0
 					font-size 2vw !important
 					font-family PT Sans
-					
+
 			.formulario-container
 				position relative
 				z-index 3
@@ -466,10 +537,10 @@ section
 				text-align center
 				@media mobile
 					font-size 4vw
-				
+
 				h1
 					margin 0
-					
+
 .servicioIndividual
 	position absolute
 	min-height 100vh
@@ -490,7 +561,7 @@ section
 			font-size 2vw
 			display flex
 			flex-direction column
-			align-items center	
+			align-items center
 			h1
 				font-family Source Sans Pro
 				margin 0
@@ -521,7 +592,7 @@ section
 							@media mobile
 								font-size 3vw
 							font-size 1.3vw
-			
+
 				imagenes
 					width 36vw
 					height 29vh

@@ -5,11 +5,19 @@
   width: 100vw;
   height: 100vh;
 }
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: #001931;
+}
 .section {
   height: 100%;
   width: calc(100% / 5);
   float: left;
   position: relative;
+}
+.section#cultura {
+  width: calc((100% / 5) * 2) !important;
 }
 .section:nth-child(1) {
   background: url("/img/fondoHome.jpeg") no-repeat center center fixed;
@@ -19,6 +27,16 @@
   background-size: cover;
 }
 .section:nth-child(3) {
+  background: url("/img/1.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.section:nth-child(3) .background {
+  width: 150vw;
+  height: 100vh;
+  position: absolute;
   background: url("/img/1.png");
   background-position: center center;
   background-repeat: no-repeat;
@@ -34,26 +52,45 @@
   width: 500vw;
   height: 100vh;
 }
-.logo {
-  cursor: pointer;
+.sections .borde {
+  background-color: #e50300;
+  width: 100%;
+  height: 5px;
+  bottom: 0px;
   position: fixed;
+  z-index: 1;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+header .logo {
+  cursor: pointer;
   z-index: 10;
   width: 191px;
   height: 80px;
 }
-.logo:focus {
+header .logo:focus {
   outline: none;
 }
 @media (max-width: 800px) {
-  .logo {
+  header .logo {
     width: 147px;
     height: 67px;
   }
 }
-.logo img {
+header .logo img {
   height: 100%;
   width: 100%;
   padding: 13px;
+}
+header .md-button {
+  background-color: #f00;
+  color: #fff;
 }
 section#home {
   position: relative;
@@ -78,7 +115,7 @@ section#home .imagen {
   top: 0px;
   bottom: 0px;
   z-index: 3;
-  height: 53vh;
+  height: 49vh;
   width: 49vw;
   background-size: cover;
   background-position: center;
@@ -213,7 +250,11 @@ section#home .home-container .line div {
   height: 100%;
 }
 section#servicios {
+  background: #001931;
   position: relative;
+}
+section#servicios.active {
+  background-color: #fff;
 }
 section#servicios .capa {
   z-index: -1;
@@ -265,6 +306,15 @@ section#servicios .servicios-container .descripcion .descripcion-content p {
   font-size: 1.2vw;
   text-align: justify;
 }
+section#servicios .servicios-container .descripcion .descripcion-content table tr {
+  display: flex;
+}
+section#servicios .servicios-container .descripcion .descripcion-content table tr th {
+  width: 50%;
+}
+section#servicios .servicios-container .descripcion .descripcion-content table p {
+  margin: 0px;
+}
 section#servicios .servicios-container .servicios-content {
   width: 100%;
   position: absolute;
@@ -278,7 +328,7 @@ section#servicios .servicios-container .servicios-content {
   }
 }
 section#servicios .servicios-container .servicios-content .servicio-indivudal {
-  border: 1px solid rgba(255,255,255,0.2) !important;
+  border: 0.5px solid #002344 !important;
   height: 100vh;
   width: calc(100vw / 5);
   display: flex;
@@ -294,15 +344,32 @@ section#servicios .servicios-container .servicios-content .servicio-indivudal {
     align-items: center;
   }
 }
-section#servicios .servicios-container .servicios-content .servicio-indivudal md-icon {
-  color: #fff;
-  font-size: 7vh;
-  height: 5vh;
-  width: 4vw;
-  cursor: pointer;
-  margin: inherit !important;
+section#servicios .servicios-container .servicios-content .servicio-indivudal.active {
+  border-color: rgba(255,255,255,0.1) !important;
 }
-section#servicios .servicios-container .servicios-content .servicio-indivudal md-icon:focus {
+section#servicios .servicios-container .servicios-content .servicio-indivudal .md-button {
+  height: 50px;
+  width: 50px;
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 50px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section#servicios .servicios-container .servicios-content .servicio-indivudal .md-button.inactive {
+  opacity: 0.1;
+}
+section#servicios .servicios-container .servicios-content .servicio-indivudal .md-button md-icon {
+  margin: 0px;
+  color: #fff;
+  font-size: 45px;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+section#servicios .servicios-container .servicios-content .servicio-indivudal .md-button md-icon:focus {
   outline: none;
 }
 section#servicios .servicios-container .servicios-content .servicio-indivudal .nombreServicio {
@@ -351,6 +418,8 @@ section#servicios .servicios-container .servicios-content .background .cortinita
 }
 section#cultura {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 section#cultura .cortina {
   z-index: 1;
@@ -419,15 +488,23 @@ section#cultura .cultura-container .informacion-container .parteIzquierda .texto
 section#cultura .cultura-container .informacion-container .parteIzquierda .textoVision h1 {
   color: #fff;
   font-family: Source Sans Pro;
+  margin: 5px 0;
 }
 section#cultura .cultura-container .informacion-container .parteIzquierda .textoVision p {
   color: #fff;
   text-align: justify;
   margin: 0px;
   font-family: PT Sans;
+  font-size: 17px;
+}
+section#cultura .cultura-container .informacion-container .parteIzquierda .textoVision md-list md-list-item {
+  min-height: 20px;
+  height: 25px;
+  color: #fff;
+  font-size: 16px;
 }
 section#cultura .cultura-container .informacion-container .parteIzquierda .imagenVision {
-  height: 36vh;
+  height: 30vh;
   width: 36vw;
   background-position: center;
   background-repeat: no-repeat;
@@ -456,7 +533,7 @@ section#cultura .cultura-container .informacion-container .parteDerecha {
   }
 }
 section#cultura .cultura-container .informacion-container .parteDerecha .imagenMision {
-  height: 36vh;
+  height: 30vh;
   width: 36vw;
   background-position: center;
   background-repeat: no-repeat;
@@ -483,10 +560,12 @@ section#cultura .cultura-container .informacion-container .parteDerecha .textoMi
 section#cultura .cultura-container .informacion-container .parteDerecha .textoMision p {
   text-align: justify;
   font-family: PT Sans;
+  font-size: 17px;
 }
 section#cultura .cultura-container .informacion-container .parteDerecha .textoMision h1 {
   margin: 0px;
   font-family: Source Sans Pro;
+  margin: 5px 0;
 }
 section#contacto {
   position: relative;

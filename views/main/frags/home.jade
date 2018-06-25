@@ -9,7 +9,7 @@
 					.cuadro-container
 						.cuadro.arriba
 							h2 ¿Quiénes somos?
-							p Una empresa formada por jóvenes ingenieros entrenados y certificados en el control de la corrosión bajo los estándares de la Asociación Nacional de Ingenieros en Corrosión de Estados Unidos(NACE International).
+							p Una empresa formada por jóvenes ingenieros entrenados y certificados en el control de la corrosión bajo los estándares de la Asociación Nacional de Ingenieros en Corrosión de Estados Unidos (NACE International).
 				.line
 					.cuadro-container
 						.cuadro.abajo
@@ -17,16 +17,16 @@
 					.texto-container.ductos-container
 						h1 Ductos
 			.cortinita
-
-		section.section#servicios
+		section.section#servicios(ng-class="{'active' : ctrl.servicios.status === true }")
 			.servicios-container
 				.tituloServicios
 					h1 {{ctrl.nombreServicio}}
 				.descripcion
 					.descripcion-content(ng-bind-html="ctrl.descripcion")
 				.servicios-content(layout="row")
-					.servicio-indivudal#individual(ng-repeat="servicio in ctrl.servicios.items" layout="column")
-						md-icon(ng-click="ctrl.servicios.click(servicio)" ng-mouseover="ctrl.servicios.muestra(servicio)" ng-mouseleave="ctrl.servicios.oculta()" ng-if="servicio.estado") adjust
+					.servicio-indivudal#individual(ng-repeat="servicio in ctrl.servicios.items" layout="column" ng-class="{'active' : ctrl.servicios.status === true }")
+						md-button(ng-click="servicio.click(servicio)" ng-if="servicio.estado" ng-mouseenter="ctrl.servicios.muestra(servicio)" ng-mouseleave="ctrl.servicios.oculta()" ng-class="{'inactive' : servicio.status === 0 }")
+							md-icon adjust
 						.nombreServicio(ng-if="servicio.estado")
 							h3 {{servicio.nombre}}
 						.capa
@@ -35,20 +35,47 @@
 						.cortinita
 		section.section#cultura
 			.cultura-container
-				.tituloCultura
-					h1 Cultura
-				.informacion-container
-					.parteIzquierda
-						.textoVision
-							h1 Visión
-							p Ser la empresa líder en el mercado mexicano en la gestión de la integridad de ductos que transporta hidrocarburos.
-						.imagenVision(style="background-image:url(img/vision.png)")
-					.parteDerecha
-						.imagenMision(style="background-image:url(img/mision.png)")
-						.textoMision
-							h1 Misión
-							p Ayudar a los operadores de ductos a entregar su producto de manera segura a sus clientes, sin riesgo para la población, los trabajadores ni el medio ambiente.
+				.cultura
+					.tituloCultura
+						h1 Cultura Organizacional
+					.informacion-container
+						.parteIzquierda
+							.textoVision
+								h1 Visión
+								p Ser la empresa líder en el mercado mexicano en la gestión de la integridad de ductos que transporta hidrocarburos.
+								h1 Misión
+								p Ayudar a los operadores de ductos a entregar su producto de manera segura a sus clientes, sin riesgo para la población, los trabajadores ni el medio ambiente.
+							.imagenVision(style="background-image:url(img/vision.png)")
+						.parteDerecha
+							.imagenMision(style="background-image:url(img/mision.png)")
+							.textoMision
+								h1 Seguridad y salud en el trabajo
+								p Asumimos muy en serio la seguridad del personal y la de tus instalaciones, estamos seguros de que la salud es el mayor bien de cualquier ser humano, por eso nos preocupamos y ocupamos en capacitar a nuestros colaboradores.			
+			.cultura-container
+				.experiencia
+					.tituloCultura
+						h1 Experiencia
+					.informacion-container
+						.parteIzquierda
+							.textoVision
+								p Integridad de Ductos” cuenta con ingenieros y técnicos certificados en
+								md-list
+									md-list-item
+										.md-list-item-text Administración de la integridad. 
+									md-list-item
+										.md-list-item-text Control de la corrosión exterior. 
+									md-list-item
+										.md-list-item-text Control de la corrosión interior. 
+									md-list-item
+										.md-list-item-text Control de la corrosión en concreto. 
+									md-list-item
+										.md-list-item-text Inspección de recubrimientos. 
+									md-list-item
+										.md-list-item-text Pruebas no Destructivas.
+								p Los ingenieros y técnicos cuentan con amplia experiencia en cada una de sus especialidades, algunos de ellos han prestado sus servicios profesionales en diferentes partes del mundo, tienen más de 15 años de servicio y han participado en diversos proyectos importantes para el crecimiento y desarrollo de nuestro país.
+							
 			.cortina
+			.background
 
 		section.section#contacto
 			.contacto-container
@@ -74,3 +101,5 @@
 				.Entregado(ng-if="!ctrl.entregado")
 					h1 Gracias por contactarnos!!
 					h1 Pronto nos comunicaremos con usted.
+	
+		.borde

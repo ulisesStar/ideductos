@@ -8,13 +8,9 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
     self.nombreServicio = "Servicios";
     self.entregado = true;
 
-    var controller = new ScrollMagic.Controller();
-
-    var horizontalSlide = new TimelineMax()
-    // animate panels
-    .to("#js-slideContainer", 1,   {x: "-20%"})
-    .to("#js-slideContainer", 1,   {x: "-40%"})
-    .to("#js-slideContainer", 1,   {x: "-60%"})
+    var controller = new ScrollMagic.Controller(
+        // {vertical : false}
+    )
 
 
     new ScrollMagic.Scene({
@@ -23,25 +19,19 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
       duration: "400%"
     })
       .setPin("#js-wrapper")
-      .setTween(horizontalSlide)
-      //.addIndicators()
+      .setTween(
+          new TimelineMax()
+            .to("#js-slideContainer", 1,   {x: "-20%"})
+            .to("#js-slideContainer", 1,   {x: "-40%"})
+            .to("#js-slideContainer", 1,   {x: "-60%"})
+            .to("#js-slideContainer", 1,   {x: "-80%"})
+      )
+      // .addIndicators()
       .addTo(controller);
 
     var animacionServicios =  new TimelineLite()
 
-    
-    
     console.log($('.servicio-indivudal'))
-    
-    new ScrollMagic.Scene({
-      triggerElement: "#servicios",
-      triggerHook: "onLeave",
-      duration: "400%"
-    })
-      //.setPin("#js-wrapper")
-      .setTween(animacionServicios)
-      //.addIndicators()
-      .addTo(controller);
 
     var home = new TimelineMax()
         .from($('.cortinita'), 2, { x: "100%"})
@@ -58,26 +48,27 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
     var scrollMagicController = new ScrollMagic.Controller({vertical: false});
 
     [
-    {seccion: '#home',   clase : '.texto-container.integridad-container h1',from : '20%',  to : '-20%'    },
-    {seccion: '#home',   clase : '.texto-container.ductos-container h1',from : '20%',  to : '-20%'    },
-    {seccion: '#home',   clase : '.cuadro-container .cuadro.arriba',from : '20%',  to : '-20%'    },
-    {seccion: '#home',   clase : '.cuadro-container .cuadro.abajo',from : '20%',  to : '-20%'    },
-    {seccion: '#home',   clase : '.imagen',from : '20%',  to : '-20%'    },
-    {seccion: '#servicios',   clase : '.tituloServicios h1',from : '20%',  to : '-20%'    },
-    {seccion: '#cultura',   clase : '.tituloCultura',from : '20%',  to : '-20%'    },
-    {seccion: '#cultura',   clase : '.parteIzquierda .textoVision',from : '20%',  to : '-20%'    },
-    {seccion: '#cultura',   clase : '.parteIzquierda .imagenVision',from : '20%',  to : '-20%'    },
-    {seccion: '#cultura',   clase : '.parteDerecha .imagenMision',from : '20%',  to : '-120'    },
-    {seccion: '#cultura',   clase : '.parteDerecha .textoMision',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#home',   clase : '.texto-container.integridad-container h1',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#home',   clase : '.texto-container.ductos-container h1',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#home',   clase : '.cuadro-container .cuadro.arriba',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#home',   clase : '.cuadro-container .cuadro.abajo',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#home',   clase : '.imagen',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#servicios',   clase : '.tituloServicios h1',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#cultura',   clase : '.tituloCultura',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#cultura',   clase : '.parteIzquierda .textoVision',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#cultura',   clase : '.parteIzquierda .imagenVision',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#cultura',   clase : '.parteDerecha .imagenMision',from : '20%',  to : '-120'    },
+        {hook : .5, seccion: '#cultura',   clase : '.parteDerecha .textoMision',from : '20%',  to : '-20%'    },
+        {hook : .5, seccion: '#cultura',   clase : '#cultura .background', from : '-20%',  to : '120%'    },
     ].forEach(n => new ScrollMagic.Scene({
         triggerElement: n.seccion,
-        triggerHook: .5,
+        triggerHook: n.hook,
         duration: $(n.seccion).width()
     })
     .setTween(
         new TimelineLite()
-          .from(n.clase, 1 , {x: n.from, ease:Power0.easeNone})
-          .to(n.clase, 1 , {x: n.to, ease:Power0.easeNone})
+          .from(n.clase, 1 , {x: n.from, ease: Power0.easeNone})
+          .to(n.clase, 1 , {x: n.to, ease: Power0.easeNone})
     )
     .addTo(scrollMagicController)
     //.addIndicators()
@@ -86,18 +77,16 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
     class Contenedor {
             constructor(){
                 this.items = []
+                this.status = false
             }
             obtener(){
                 Servicio.obtener()
                 .then(res => self.servicios.items = res.data.map(n => new Servicios_(n)))
-                //.then(res => individual())
+                .then(res => console.log(res))
                 .then(() => $scope.$digest())
             }
 
-            click(algo){
-              console.log(algo)
-              $state.go('servicio', {id : algo.id});
-            }
+
 
             muestra(algo){
               self.servicios.items.forEach(n =>{
@@ -108,7 +97,8 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
                     self.descripcion = n.descripcion;
                     var imagenServicio = $('.background')
                     TweenMax.fromTo(imagenServicio,1,{'opacity':'0',ease:Quad.easeOut},{'opacity':'1',ease:Quad.easeOut});
-                    TweenMax.to(".capa",.5,{'width':'0',ease:Quad.easeOut});
+                    TweenMax.to(".capa",.5,{'width':'0',ease:Quad.easeOut, });
+                    this.status = true
 
                   }else{
                     n.estado = false;
@@ -123,17 +113,28 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
               self.background = " ";
               self.descripcion = null;
               self.nombreServicio = "Servicios";
+              this.status = false
 
             }
         }
 
       class Servicios_ {
           constructor(arg){
-              this.id = arg.id,
-              this.nombre = arg.nombre,
+              Object.entries(arg).forEach(n => this[n[0]] = n[1])
               this.estado = true,
-              this.descripcion = arg.descripcion,
-              this.imagen = arg.ImagenServicio[0]
+              this.obtenerImagen()
+          }
+          click(algo){
+             this.status === 1 ?
+             $state.go('servicio', {id : this.id}) : null
+          }
+          obtenerImagen(){
+
+            Servicio.imagen(this.id)
+            .then(response => this.imagen = response.data[0])
+            .then(() => $scope.$digest())
+
+
           }
       }
 
@@ -142,7 +143,7 @@ app.controller('homeCtrl', function($scope, $rootScope, $http, $mdDialog, mdDial
 
       class Formulario_{
         constructor(){
-        } 
+        }
 
         nuevoProspecto(algo){
           Prospectos.crear(algo).then(res => console.log(res.data))

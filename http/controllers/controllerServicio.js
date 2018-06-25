@@ -60,17 +60,15 @@ ex.read = function(req, res, next) {
             res.status(200).jsonp(result);
         });
     } else {
-        servicio.findAll({
-            include: {
-                model: imagenes,
-                as: 'ImagenServicio',
-                attributes: ['imagen']
-            }
-        }).then(function(result) {
+        servicio.findAll().then(function(result) {
             res.status(200).jsonp(result);
         });
     }
 };
+
+ex.imagen = (req, res, next) => servicio.findById(req.params.id)
+    .then(servicio => servicio.getImagenServicio())
+    .then(result => res.status(200).jsonp(result))
 
 
 ex.Subservicios = function(req, res, next) {

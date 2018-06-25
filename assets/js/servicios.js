@@ -7,6 +7,10 @@ app.service('Servicio', function() {
     this.eliminar = function(id) { return axios.delete('/data/servicio/' + id) }
     this.TodosSubservicios = function(id) { return axios('/data/Subservicios/' + id) }
 
+    this.imagen = (id) => axios('/data/servicio/imagen/' + id)
+
+
+
 });
 
 app.service('SubServicio', function() {
